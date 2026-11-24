@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Camila Rojas · Tarjeta de presentación</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <div class="scene">
+    <div class="card" id="card" role="button" tabindex="0" aria-label="Tarjeta de presentación. Toca para girarla y jugar.">
+      <section class="face front">
+        <div>
+          <div class="dot" aria-hidden="true"></div>
+          <h1 class="name">Camila<br>Rojas</h1>
+          <p class="role">Diseño y desarrollo web</p>
+        </div>
+        <div>
+          <ul class="contact">
+            <li><a href="mailto:hola@camilarojas.co">hola@camilarojas.co</a></li>
+            <li><a href="tel:+570000000000">+57 300 000 0000</a></li>
+            <li>camilarojas.co</li>
+          </ul>
+          <p class="hint" style="margin-top:14px">Gira la tarjeta: hay un juego al reverso.</p>
+        </div>
+      </section>
+
+      <section class="face back" aria-label="Juego: ¿Dónde está la bolita?">
+        <div class="top">
+          <h2>¿Dónde está la bolita?</h2>
+          <div class="stats" aria-live="off"><span>Aciertos: <b id="wins">0</b></span><span>Racha: <b id="streak">0</b></span><span>Velocidad: <b id="level">1x</b></span></div>
+        </div>
+        <div class="table" id="table">
+          <button class="cup" data-i="0" aria-label="Vaso 1" disabled><span class="ball"></span><span class="body"></span></button>
+          <button class="cup" data-i="1" aria-label="Vaso 2" disabled><span class="ball"></span><span class="body"></span></button>
+          <button class="cup" data-i="2" aria-label="Vaso 3" disabled><span class="ball"></span><span class="body"></span></button>
+        </div>
+        <p class="status" id="status" aria-live="polite">Pulsa Jugar y sigue la bolita con la vista.</p>
+        <div class="actions">
+          <button class="btn" id="play">Jugar</button>
+          <button class="btn ghost" id="back-btn">Ver tarjeta</button>
+        </div>
+      </section>
+    </div>
+  </div>
+  <button class="flip-link" id="flip">Girar tarjeta</button>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

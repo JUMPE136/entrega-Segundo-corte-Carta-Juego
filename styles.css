@@ -1,0 +1,64 @@
+:root{
+  --page:#dde5f0; --ink:#14213d; --card-front:#c93a24; --on-front:#fff6ef;
+  --card-back:#14213d; --sun:#ffc233; --sun-deep:#e0a010; --ball:#e4472f; --on-back:#eef2fb;
+  --font:'Bricolage Grotesque',system-ui,'Segoe UI',sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--page:#0a0f1d;--ink:#eef2fb}
+}
+:root[data-theme="dark"]{--page:#0a0f1d;--ink:#eef2fb}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--page);color:var(--ink);font-family:var(--font);padding:24px 16px}
+main{width:100%;display:grid;justify-items:center;gap:20px}
+
+.scene{width:min(94vw,580px);height:380px;perspective:1400px}
+.card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.3,.7,.2,1);cursor:pointer}
+.card.flipped{transform:rotateY(180deg);cursor:default}
+.face{position:absolute;inset:0;border-radius:18px;padding:28px 30px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 24px 40px -18px rgba(10,15,40,.55);display:flex;flex-direction:column;transition:visibility 0s .4s}
+.front{background:var(--card-front);color:var(--on-front);justify-content:space-between}
+.back{background:var(--card-back);color:var(--on-back);transform:rotateY(180deg);visibility:hidden}
+.card.flipped .front{visibility:hidden}
+.card.flipped .back{visibility:visible;transition-delay:0s}
+.card:not(.flipped) .front{visibility:visible;transition-delay:0s}
+
+.name{font-size:clamp(2.2rem,8vw,3.3rem);font-weight:800;line-height:.95;letter-spacing:-.03em;margin:0}
+.role{font-size:1.1rem;margin:10px 0 0;opacity:.92}
+.dot{width:54px;height:54px;border-radius:50%;background:var(--sun);box-shadow:inset -6px -8px 0 rgba(0,0,0,.12);margin-bottom:14px}
+.contact{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:1rem}
+.contact a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+.hint{margin:0;font-size:.9rem;opacity:.85}
+
+button{font:inherit;cursor:pointer}
+button:focus-visible,.card:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.btn{border:0;border-radius:999px;padding:10px 20px;font-weight:600;background:var(--sun);color:#14213d}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn:active{transform:translateY(1px)}
+
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.top h2{margin:0;font-size:1.5rem;letter-spacing:-.02em}
+.stats{font-size:.95rem;opacity:.9;display:flex;gap:14px}
+.table{position:relative;flex:1;margin:6px 0}
+.cup{position:absolute;bottom:6px;width:33.333%;height:120px;border:0;background:none;padding:0;
+  transition:left var(--dur,.4s) ease-in-out}
+.cup .ball{position:absolute;left:50%;bottom:4px;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:var(--ball);
+  box-shadow:inset -4px -5px 0 rgba(0,0,0,.2);opacity:0}
+.cup.has-ball .ball{opacity:1}
+.cup .body{position:absolute;left:50%;bottom:0;width:78%;height:96px;margin-left:-39%;
+  background:linear-gradient(90deg,var(--sun-deep),var(--sun) 35%,var(--sun) 65%,var(--sun-deep));
+  clip-path:polygon(16% 0,84% 0,100% 100%,0 100%);transition:transform .35s ease}
+.cup .body::after{content:"";position:absolute;left:0;right:0;top:34px;height:10px;background:rgba(20,33,61,.25)}
+.cup.up .body{transform:translateY(-64px)}
+.cup:disabled{cursor:default}
+.cup.pickable:hover .body{filter:brightness(1.12)}
+.cup.pickable{cursor:pointer}
+.cup.win .body{filter:brightness(1.1)}
+.status{min-height:1.4em;margin:0;text-align:center;font-weight:600}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:10px}
+
+.flip-link{background:none;border:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:.95rem}
+@media (max-width:520px){.scene{height:430px}.face{padding:22px 20px}.cup{height:104px}.cup .body{height:82px}.cup.up .body{transform:translateY(-54px)}}
+@media (prefers-reduced-motion:reduce){.card{transition-duration:.01s}.cup .body{transition-duration:.01s}}
