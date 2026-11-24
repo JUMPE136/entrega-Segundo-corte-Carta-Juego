@@ -41,24 +41,24 @@ button:focus-visible,.card:focus-visible{outline:3px solid var(--sun);outline-of
 .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
 .top h2{margin:0;font-size:1.5rem;letter-spacing:-.02em}
 .stats{font-size:.95rem;opacity:.9;display:flex;gap:14px}
-.table{position:relative;flex:1;margin:6px 0}
-.cup{position:absolute;bottom:6px;width:33.333%;height:120px;border:0;background:none;padding:0;
-  transition:left var(--dur,.4s) ease-in-out}
-.cup .ball{position:absolute;left:50%;bottom:4px;width:26px;height:26px;margin-left:-13px;border-radius:50%;background:var(--ball);
-  box-shadow:inset -4px -5px 0 rgba(0,0,0,.2);opacity:0}
-.cup.has-ball .ball{opacity:1}
-.cup .body{position:absolute;left:50%;bottom:0;width:78%;height:96px;margin-left:-39%;
-  background:linear-gradient(90deg,var(--sun-deep),var(--sun) 35%,var(--sun) 65%,var(--sun-deep));
-  clip-path:polygon(16% 0,84% 0,100% 100%,0 100%);transition:transform .35s ease}
-.cup .body::after{content:"";position:absolute;left:0;right:0;top:34px;height:10px;background:rgba(20,33,61,.25)}
-.cup.up .body{transform:translateY(-64px)}
-.cup:disabled{cursor:default}
-.cup.pickable:hover .body{filter:brightness(1.12)}
-.cup.pickable{cursor:pointer}
-.cup.win .body{filter:brightness(1.1)}
-.status{min-height:1.4em;margin:0;text-align:center;font-weight:600}
-.actions{display:flex;justify-content:space-between;align-items:center;gap:10px}
-
+canvas{display:block;width:100%;height:auto;flex:0 1 auto;margin:0;border-radius:10px;background:#1b2b4d;image-rendering:pixelated}
+.stage{position:relative;margin:10px 0}
+.tuto{position:absolute;inset:0;border-radius:10px;background:rgba(10,15,30,.94);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:10px 22px}
+.tuto[hidden]{display:none}
+.tuto .row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600}
+.keys{display:flex;gap:6px}
+kbd{min-width:34px;height:34px;padding:0 8px;display:inline-grid;place-items:center;border-radius:8px;background:var(--on-back);color:#14213d;font:700 .9rem var(--font);box-shadow:0 4px 0 #8b97b8;animation:press 1.6s infinite}
+kbd.wide{min-width:92px}
+.row:nth-child(2) kbd{animation-delay:.5s}.row:nth-child(3) kbd{animation-delay:1s}
+@keyframes press{0%,70%,100%{transform:none;box-shadow:0 4px 0 #8b97b8}80%,90%{transform:translateY(3px);box-shadow:0 1px 0 #8b97b8}}
+.tuto .btn{align-self:center}
+.tuto-note{margin:0;font-size:.85rem;text-align:center;opacity:.85}
+.tuto-touch{display:none;margin:0;text-align:center}
+.status{margin:0;font-size:.78rem;opacity:.8;text-align:center;line-height:1.25}
+.actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}
+.touch{display:none;gap:8px;margin-bottom:10px}
+.touch button{flex:1;border:1.5px solid var(--sun);background:transparent;color:var(--on-back);border-radius:10px;padding:10px 4px;touch-action:none;user-select:none}
 .flip-link{background:none;border:0;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:.95rem}
-@media (max-width:520px){.scene{height:430px}.face{padding:22px 20px}.cup{height:104px}.cup .body{height:82px}.cup.up .body{transform:translateY(-54px)}}
-@media (prefers-reduced-motion:reduce){.card{transition-duration:.01s}.cup .body{transition-duration:.01s}}
+@media (pointer:coarse){.touch{display:flex}.tuto .row{display:none}.tuto-touch{display:block}}
+@media (max-width:520px){.scene{height:470px}.face{padding:20px 16px}.status{display:none}.tuto-note{display:none}.tuto{gap:6px;padding:8px 14px}kbd{min-width:26px;height:26px;font-size:.75rem}kbd.wide{min-width:66px}.tuto .btn{padding:6px 14px}}
+@media (prefers-reduced-motion:reduce){.card{transition-duration:.01s}kbd{animation:none}}

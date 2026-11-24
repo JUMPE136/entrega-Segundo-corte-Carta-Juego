@@ -28,19 +28,28 @@
         </div>
       </section>
 
-      <section class="face back" aria-label="Juego: ¿Dónde está la bolita?">
+      <section class="face back" aria-label="Juego de plataformas Súper Bug Bros">
         <div class="top">
-          <h2>¿Dónde está la bolita?</h2>
-          <div class="stats" aria-live="off"><span>Aciertos: <b id="wins">0</b></span><span>Racha: <b id="streak">0</b></span><span>Velocidad: <b id="level">1x</b></span></div>
+          <h2>Súper Bug Bros</h2>
+          <div class="stats"><span>Puntos: <b id="score">0</b></span><span>Cafés: <b id="lives">3</b></span></div>
         </div>
-        <div class="table" id="table">
-          <button class="cup" data-i="0" aria-label="Vaso 1" disabled><span class="ball"></span><span class="body"></span></button>
-          <button class="cup" data-i="1" aria-label="Vaso 2" disabled><span class="ball"></span><span class="body"></span></button>
-          <button class="cup" data-i="2" aria-label="Vaso 3" disabled><span class="ball"></span><span class="body"></span></button>
+        <div class="stage">
+          <canvas id="game" width="520" height="240" aria-label="Pantalla del juego"></canvas>
+          <div class="tuto" id="tuto" hidden>
+            <div class="row"><span class="keys"><kbd>A</kbd><kbd>D</kbd><kbd>&larr;</kbd><kbd>&rarr;</kbd></span><span>Moverte</span></div>
+            <div class="row"><span class="keys"><kbd>W</kbd><kbd>&uarr;</kbd><kbd class="wide">Espacio</kbd></span><span>Saltar</span></div>
+            <div class="row"><span class="keys"><kbd>J</kbd><kbd>Z</kbd><kbd>X</kbd></span><span>Correr (mantén)</span></div>
+            <p class="tuto-note">5 niveles: pisa a los bugs, esquiva bombas y vence a Goser cuando esté cansado.</p>
+            <p class="tuto-touch">Usa los botones de abajo: &larr; &rarr; para moverte, Saltar y Correr.</p>
+            <button class="btn" id="go">&iexcl;Entendido, a jugar!</button>
+          </div>
         </div>
-        <p class="status" id="status" aria-live="polite">Pulsa Jugar y sigue la bolita con la vista.</p>
+        <div class="touch" aria-hidden="true">
+          <button data-k="left">&larr;</button><button data-k="right">&rarr;</button><button data-k="up">Saltar</button><button data-k="fire">Correr</button>
+        </div>
         <div class="actions">
           <button class="btn" id="play">Jugar</button>
+          <p class="status" id="status">Mover: A/D · Saltar: W · Correr: J</p>
           <button class="btn ghost" id="back-btn">Ver tarjeta</button>
         </div>
       </section>
